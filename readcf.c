@@ -1,6 +1,6 @@
 
 /*
- * $Header: /tmp/cvs/psimail/readcf.c,v 1.1 1991/11/20 10:19:50 hans Exp $
+ * $Header: /tmp/cvs/psimail/readcf.c,v 1.2 1991/11/22 13:26:16 hans Exp $
  *
  */
 
@@ -23,18 +23,21 @@ SENDMAIL=/usr/lib/sendmail -odi -f
 /*
  *
  *	$Log: readcf.c,v $
- *	Revision 1.1  1991/11/20 10:19:50  hans
- *	Initial revision
+ *	Revision 1.2  1991/11/22 13:26:16  hans
+ *	SunLink/X25 changes.
+ *	Misc. bug fixes
+ *
+ * Revision 1.1  1991/11/20  10:19:50  hans
+ * Initial revision
  *
  *
  */
 
 #ifndef lint
-static char RCSid[] = "$Id: readcf.c,v 1.1 1991/11/20 10:19:50 hans Exp $ netCS";
+static char RCSid[] = "$Id: readcf.c,v 1.2 1991/11/22 13:26:16 hans Exp $ netCS";
 #endif /* lint */
 
-#define DEFAULTS "/usr/lib/x25/psi/config"
-
+#include "psi_config.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -54,7 +57,7 @@ readcf()
 	strcpy(cf_postmaster,"postmaster");
 	strcpy(cf_mta,"/usr/lib/sendmail -bm -odi -f");
 
-	if(fpcf = fopen(DEFAULTS,"r"))
+	if(fpcf = fopen(CONFIGFILE,"r"))
 	{
 		while(fgets(line,127,fpcf))
 		{
